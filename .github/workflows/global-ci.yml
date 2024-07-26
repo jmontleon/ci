@@ -140,7 +140,7 @@ on:
 
 jobs:
   e2e-api-integration-tests:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     if: ${{ inputs.run_api_tests }}
     steps:
       - name: Extract pull request number from inputs or PR description
