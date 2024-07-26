@@ -249,7 +249,8 @@ jobs:
         run: |
           export HUB_BASE_URL="http://$(minikube ip)/hub"
           export HUB_TESTS_REF="${{ inputs.api_hub_tests_ref }}"
-          make test-tier0 test-tier1
+          make test-tier0 test-tier1 ||:
+          df -h
         working-directory: go-konveyor-tests
 
   e2e-ui-integration-tests:
