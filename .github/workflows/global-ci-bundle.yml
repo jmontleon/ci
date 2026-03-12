@@ -226,7 +226,7 @@ env:
 
 jobs:
   check-images:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-20260201
     steps:
       - name: Check operator image exists
         if: ${{ inputs.operator_bundle != '' }}
@@ -273,8 +273,8 @@ jobs:
 
   e2e-api-integration-tests:
     needs: check-images
-    runs-on: ubuntu-latest
-    if: ${{ inputs.run_api_tests }}
+    runs-on: ubuntu-24.04-20260201
+    if: ${{ github.event_name == 'pull_request' || inputs.run_api_tests }}
     defaults:
       run:
         shell: bash
@@ -395,7 +395,7 @@ jobs:
   e2e-ui-integration-tests:
     needs: check-images
     if: ${{ inputs.run_ui_tests }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-20260201
     defaults:
       run:
         shell: bash
